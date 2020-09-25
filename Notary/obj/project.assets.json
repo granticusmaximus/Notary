@@ -5672,7 +5672,7 @@
       "outputPath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/grantwatson/.config/NuGet/NuGet.Config"
+        "/Users/grantwatson/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
