@@ -1,0 +1,56 @@
+﻿@model Notary.Models.Note
+
+@{ ViewData["Title"] = "Edit"; }
+
+<h4>Edit Entry</h4>
+<div>
+    <button class="btn btn-secondary"><a asp-action="Index" style="color:white"><i class="fa fa-list-ul" aria-hidden="true"></i> Back to List</a></button>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ContentID" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DateCreated" class="control-label"></label>
+                        <input asp-for="DateCreated" class="form-control" id="datepicker" type="text" />
+                        <span asp-validation-for="DateCreated" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea cols="250" asp-for="Description" class="textarea" placeholder="Place some text here"
+                              style="height: 550px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; border-radius:3px; padding: 10px;"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button> |
+                <button class="btn btn-danger"><a asp-action="Delete" style="color:black" asp-route-id="@Model.ContentID"><i class="fa fa-times" aria-hidden="true"></i>Delete</a></button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<br />
+<hr />
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

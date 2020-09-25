@@ -1,0 +1,99 @@
+﻿@model Notary.ViewModel.EntryViewModel
+
+
+@{ ViewData["Title"] = "Index";}
+
+<h1>List of Current Entries</h1>
+
+<p>
+    <!-- Create Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-file-text-o" aria-hidden="true"></i> Add New Entry</button>
+</p>
+<form class="search-wrapper cf" asp-controller="Note" asp-action="Index" method="GET">
+    <input class="form-control" placeholder="Search for Entry Title" name="SearchString" type="text">
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="70%">
+                @Html.DisplayNameFor(model => model.Entries[0].Title)
+            </th>
+            <th width="20%">
+                @Html.DisplayNameFor(model => model.Entries[0].DateCreated)
+            </th>
+            <th width="10%">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Entries)
+        {
+            <tr>
+                <td width="70%">
+                    <a asp-action="Details" asp-route-id="@item.ContentID">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td width="15%">
+                    @item.DateCreated.ToString("dd-MMM-yyyy")
+                </td>
+                <td width="10%">
+                    <button type="button" class="btn btn-outline-primary"><a asp-action="Edit" asp-route-id="@item.ContentID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
+
+
+<!--Start Create New Entry Modal-->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Entry</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Entry.Title" class="control-label"></label>
+                                <input asp-for="Entry.Title" class="form-control" />
+                                <span asp-validation-for="Entry.Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Entry.DateCreated" class="control-label"></label>
+                                <input asp-for="Entry.DateCreated" class="form-control" id="datepicker" />
+                                <span asp-validation-for="Entry.DateCreated" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Entry.Description" class="control-label"></label>
+                                <textarea cols="250" asp-for="Entry.Description" class="textarea" placeholder="Place some text here"
+                                          style="height: 550px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; border-radius:3px; padding: 10px;"></textarea>
+                                <span asp-validation-for="Entry.Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="Entry.AppUser.Id" name="ApplicationUser" />
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Create Entry</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Create New Entry Modal-->
+
+
+<br />
+<hr />

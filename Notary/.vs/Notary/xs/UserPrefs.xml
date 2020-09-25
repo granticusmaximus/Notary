@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{74BE7890-B044-4EE9-9ADB-812F1CC4A3EE}|Default">
+  <MonoDevelop.Ide.ItemProperties.Notary PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
+    <Files>
+      <File FileName="Controllers/NoteController.cs" Line="71" Column="103" />
+      <File FileName="ViewModel/EntryViewModel.cs" Line="7" Column="20" />
+      <File FileName="Views/Note/Create.cshtml" Line="1" Column="26" />
+      <File FileName="Views/Note/Delete.cshtml" Line="1" Column="26" />
+      <File FileName="Views/Note/Details.cshtml" Line="1" Column="8" />
+      <File FileName="Program.cs" Line="24" Column="33" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Notary" expanded="True">
+            <Node name="Notary" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="ViewModel" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Note" expanded="True" />
+              </Node>
+              <Node name="Startup.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
