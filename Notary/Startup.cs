@@ -80,7 +80,9 @@ namespace Notary
                                 (new BrowserWindowOptions {
                 Width = 1000,
                 Height = 800,
-                Show = false,
+                Title = "Notary App",
+                Transparent = true, 
+                Frame = false,
             });
 
             browserWindow.OnReadyToShow += () => browserWindow.Show();

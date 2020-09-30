@@ -8,6 +8,43 @@ for details on configuring this project to bundle and minify static web assets. 
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !important;
 }
 
+.navbar-header {
+  float: left;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+}
+.navbar-brand {float:none;}
+
+nav #buttons {
+  float: right;
+  width: 150px;
+  height: 100%;
+  line-height: 30px;
+  background-color: #fff;
+}
+
+nav #buttons #minimize,
+nav #buttons #maximize,
+nav #buttons #quit {
+  float: left;
+  height: 100%;
+  width: 33%;
+  text-align: center;
+  color : #333333aa;
+  cursor: default;
+}
+
+nav #buttons #minimize:hover {
+  background-color: #fff;
+}
+nav #buttons #maximize:hover {
+  background-color: #fff;
+}
+nav #buttons #quit:hover {
+  background-color: #fff;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
