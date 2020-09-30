@@ -20,7 +20,16 @@ namespace Notary.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var loginURL ="~/Identity/Account/Login";
+            var noteURL ="~/Note/Index";
+            if(!User.Identity.IsAuthenticated)
+            {
+                return LocalRedirect(loginURL);
+            }
+            else
+            {
+                return LocalRedirect(noteURL);
+            }
         }
 
         public IActionResult Privacy()
