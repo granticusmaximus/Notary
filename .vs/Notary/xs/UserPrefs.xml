@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Notary/Data/ApplicationDbContext.cs">
     <Files>
       <File FileName="Notary/Models/Note.cs" Line="13" Column="12" />
-      <File FileName="Notary/Models/ApplicationUser.cs" Line="16" Column="13" />
+      <File FileName="Notary/Models/ApplicationUser.cs" />
       <File FileName="Notary/Data/ApplicationDbContext.cs" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -11,9 +11,10 @@
         <State name="__root__">
           <Node name="Notary" expanded="True">
             <Node name="Notary" expanded="True">
-              <Node name="Data" expanded="True">
-                <Node name="ApplicationDbContext.cs" selected="True" />
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" selected="True" />
               </Node>
+              <Node name="Data" expanded="True" />
             </Node>
           </Node>
         </State>
