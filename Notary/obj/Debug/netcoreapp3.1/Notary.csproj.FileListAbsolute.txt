@@ -11,7 +11,6 @@
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/electron.manifest.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/Notary.StaticWebAssets.xml
-/Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/app.db
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/Notary.deps.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/Notary.runtimeconfig.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/Notary.runtimeconfig.dev.json
@@ -201,3 +200,4 @@
 /Users/grantwatson/Desktop/Dev/Notary/Notary/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/_ViewImports.cshtml.g.cs
 /Users/grantwatson/Desktop/Dev/Notary/Notary/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml.g.cs
 /Users/grantwatson/Desktop/Dev/Notary/Notary/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewImports.cshtml.g.cs
+/Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/app.db
