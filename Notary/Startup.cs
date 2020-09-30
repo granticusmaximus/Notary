@@ -12,6 +12,8 @@ using Notary.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ElectronNET.API;
+using ElectronNET.API.Entities;
 
 namespace Notary
 {
@@ -65,6 +67,24 @@ namespace Notary
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            // Open the Electron-Window here
+            // Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+            if (HybridSupport.IsElectronActive) {
+                ElectronBootstrap();
+            }
+        }
+
+        public async void ElectronBootstrap()
+        {
+            var browserWindow = await Electron.WindowManager.CreateWindowAsync
+                                (new BrowserWindowOptions {
+                Width = 1000,
+                Height = 800,
+                Show = false,
+            });
+
+            browserWindow.OnReadyToShow += () => browserWindow.Show();
+            browserWindow.SetTitle("Notary App");
         }
     }
 }
