@@ -200,4 +200,5 @@
 /Users/grantwatson/Desktop/Dev/Notary/Notary/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/_ViewImports.cshtml.g.cs
 /Users/grantwatson/Desktop/Dev/Notary/Notary/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml.g.cs
 /Users/grantwatson/Desktop/Dev/Notary/Notary/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/_ViewImports.cshtml.g.cs
+/Users/grantwatson/Desktop/Dev/Notary/Notary/obj/Debug/netcoreapp3.1/Razor/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml.g.cs
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/app.db
