@@ -225,6 +225,26 @@ namespace Notary.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Notary.Models.Folder", b =>
+                {
+                    b.Property<int>("FolderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FolderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NoteContentID")
+                        .HasColumnType("int");
+
+                    b.HasKey("FolderID");
+
+                    b.HasIndex("NoteContentID");
+
+                    b.ToTable("Folders");
+                });
+
             modelBuilder.Entity("Notary.Models.Note", b =>
                 {
                     b.Property<int>("ContentID")
@@ -241,12 +261,17 @@ namespace Notary.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("FolderID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ContentID");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("FolderID");
 
                     b.ToTable("Notes");
                 });
@@ -266,17 +291,17 @@ namespace Notary.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b1c461d5-c54e-4575-9d61-d3fdb8b5057f",
+                            Id = "3fb57d35-9324-453d-a043-80504c194e52",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "af1bacfa-deb9-4287-8fc7-54f452a5127b",
+                            ConcurrencyStamp = "28693511-a773-4a8e-9d48-5c0037332ecd",
                             Email = "gwatson117@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "gwatson117@gmail.com",
                             NormalizedUserName = "gwatson117@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAGpkSNDSDuhjCTCH9WJ4KfetTBshjyK1TerLMb+7bCRbSoTVkw3iKoUWXPUJ3rPuQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJcPzmPjf/GaXrsHtClnv3HG/jnouCny3pqZZRSbwQ3QG5im+Onsa5S5p1is1Wd9CQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c2a06ef2-44d5-44a9-b0b9-4feed64d5d7f",
+                            SecurityStamp = "1a0043b8-29f6-4543-8cf4-ec47475deb33",
                             TwoFactorEnabled = false,
                             UserName = "gwatson117@gmail.com",
                             FirstName = "Grant",
@@ -335,11 +360,22 @@ namespace Notary.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Notary.Models.Folder", b =>
+                {
+                    b.HasOne("Notary.Models.Note", "Note")
+                        .WithMany()
+                        .HasForeignKey("NoteContentID");
+                });
+
             modelBuilder.Entity("Notary.Models.Note", b =>
                 {
                     b.HasOne("Notary.Models.ApplicationUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
+
+                    b.HasOne("Notary.Models.Folder", null)
+                        .WithMany("Notes")
+                        .HasForeignKey("FolderID");
                 });
 #pragma warning restore 612, 618
         }

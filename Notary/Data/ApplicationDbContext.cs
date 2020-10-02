@@ -16,6 +16,7 @@ namespace Notary.Data
         {
         }
 
+        #region DBSets
         public DbSet<ApplicationUser> ApplicationUser
         {
             get; set;
@@ -26,6 +27,14 @@ namespace Notary.Data
             get; set;
 
         }
+
+        public DbSet<Folder> Folders
+        {
+            get; set;
+
+        }
+        #endregion
+
         #region Seed Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
