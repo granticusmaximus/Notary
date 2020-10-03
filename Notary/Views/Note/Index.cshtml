@@ -12,15 +12,21 @@
 <form class="search-wrapper cf" asp-controller="Note" asp-action="Index" method="GET">
     <input class="form-control" placeholder="Search for Entry Title" name="SearchString" type="text">
 </form>
+<hr/>
 @foreach (var item in Model.Entries)
     {
-        <div class="card" style="width: 18rem;">
-            <img src="~/img/document.jpg" class="card-img-top" alt="Document Icon">
-            <div class="card-body">
-                <h5 class="card-title"><a asp-action="Details" asp-route-id="@item.ContentID">@Html.DisplayFor(modelItem => item.Title)</a></h5>
-                <p class="card-text">@item.DateCreated.ToString("dd-MMM-yyyy")</p>
-                <p class="card-text">@Html.Raw((item.Description.Length > 200 ? item.Description.Substring(0, 150) : item.Description))</p>
-                <a class="btn btn-primary"><a asp-action="Edit" asp-route-id="@item.ContentID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <img src="~/img/document.jpg" class="card-img-top" alt="Document Icon">
+                        <div class="card-body">
+                            <h5 class="card-title"><a asp-action="Details" asp-route-id="@item.ContentID">@Html.DisplayFor(modelItem => item.Title)</a></h5>
+                            <p class="card-text">@item.DateCreated.ToString("dd-MMM-yyyy")</p>
+                            <a asp-action="Edit" asp-route-id="@item.ContentID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Note</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     }
