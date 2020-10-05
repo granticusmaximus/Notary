@@ -67,7 +67,7 @@
 
             $('.textarea').summernote()
         });
-        const { app, remote } = require("electron");
+        const { remote } = require("electron").remote;
         var win = remote.BrowserWindow.getFocusedWindow();
 
         var minimize = document.querySelector("#minimize");
@@ -85,17 +85,7 @@
         quit.addEventListener("click", () => {
             win.close();
         });
-
-        win.addEventListener("close", () => {
-            win = null;
-            app.quit();
-        });
-
-        app.on('window-all-closed', () => {
-            if(process.platform !== "darwin")
-                app.quit();
-        });
-        
+                
         </script>
 
     @RenderSection("Scripts", required: false)
