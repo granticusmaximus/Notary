@@ -4,6 +4,12 @@
     "description": "",
     "main": "main.js",
     "host": "darwin-dark-mode-support",
+    "build": {
+        "appId": "your.id",
+        "mac": {
+          "category": "your.app.category.type"
+        }
+    },
     "scripts": {
         "start": "electron .",
         "pack": "electron-builder --dir",
