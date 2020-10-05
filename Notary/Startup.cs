@@ -91,6 +91,10 @@ namespace Notary
 
             browserWindow.OnReadyToShow += () => browserWindow.Show();
             browserWindow.SetTitle("Notary App");
+            browserWindow.OnClosed += () => {
+                browserWindow.Close();
+            
+            };
         }
     }
 }

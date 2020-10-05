@@ -1,6 +1,8 @@
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/appsettings.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/electron.manifest.json
+/Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/package-lock.json
+/Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/package.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/Notary.StaticWebAssets.xml
 /Users/grantwatson/Desktop/Dev/Notary/Notary/bin/Debug/netcoreapp3.1/app.db
