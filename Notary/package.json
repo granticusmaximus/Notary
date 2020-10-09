@@ -14,6 +14,7 @@
     "build": {
       "appId": "notary",
       "category": "your.app.category.type",
+      "icon": "~/wwwroot/img/Icon.iconset",
       "dmg": {
         "contents": [
           {
