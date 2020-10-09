@@ -23,11 +23,11 @@
 <body style="-webkit-app-region: drag">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div id="buttons">
+           <!-- <div id="buttons">
                 <div id="quit"><span>&times;</span></div>
                 <div id="maximize"><span>&square;</span></div>
                 <div id="minimize"><span>&dash;</span></div>
-            </div>
+            </div> -->
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Notary</a>
@@ -67,24 +67,32 @@
 
             $('.textarea').summernote()
         });
-        const { remote } = require("electron").remote;
-        var win = remote.BrowserWindow.getFocusedWindow();
+        const { remote } = require("electron");
 
-        var minimize = document.querySelector("#minimize");
-        var maximize = document.querySelector("#maximize");
-        var quit = document.querySelector("#quit");
+        //var win = remote.BrowserWindow.getFocusedWindow();
 
-        minimize.addEventListener("click", () => {
-            win.minimize();
-        });
+        //win.minimize();
+        // Maximize app
+        //win.maximize();
+        // Close app
+        //win.close();
 
-        maximize.addEventListener("click", () => {
-            win.setFullScreen(!win.isFullScreen());
-        });
+        //var minimize = document.querySelector("#minimize");
+        //var maximize = document.querySelector("#maximize");
+        //var quit = document.querySelector("#quit");
 
-        quit.addEventListener("click", () => {
-            win.close();
-        });
+
+        //minimize.addEventListener("click", () => {
+            //win.minimize();
+        //});
+
+        //maximize.addEventListener("click", () => {
+            //win.setFullScreen(!win.isFullScreen());
+        //});
+
+        //quit.addEventListener("click", () => {
+            //win.close();
+        //});
                 
         </script>
 

@@ -85,8 +85,8 @@ namespace Notary
                 Width = 1000,
                 Height = 800,
                 Title = "Notary App",
-                Transparent = true, 
-                Frame = false,
+                //Transparent = true, 
+                //Frame = false,
             });
 
             browserWindow.OnReadyToShow += () => browserWindow.Show();

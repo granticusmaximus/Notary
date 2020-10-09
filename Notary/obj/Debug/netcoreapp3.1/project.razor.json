@@ -14397,6 +14397,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/Folder/Index.cshtml",
+      "TargetPath": "Views\\Folder\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"

@@ -8,6 +8,9 @@ namespace Notary.ViewModel
     {
         public List<Note> Entries { get; set; }
         public Note Entry { get; set; }
+
+        public Folder Folder {get;set;}
+        public List<Folder> Folders {get;set;}
         public string SearchString { get; set; }
     }
 }
