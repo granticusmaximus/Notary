@@ -6,8 +6,20 @@
 <h1>Notes</h1>
 
 <p>
-    <!-- Create Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-file-text-o" aria-hidden="true"></i> Add New Entry</button>
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-plus-square"> Add Item</i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <!-- Create New Note Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-file-text-o" aria-hidden="true"></i> New Note</button>
+            <!-- Create New Folder Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-folder-open"></i> New Folder</button>
+        </div>
+    </div>
+    
+    
 </p>
 <form class="search-wrapper cf" asp-controller="Note" asp-action="Index" method="GET">
     <input class="form-control" placeholder="Search for Entry Title" name="SearchString" type="text">
@@ -20,9 +32,8 @@
             <div class="card" style="width: 18rem;">
                 <img src="~/img/document.jpg" class="card-img-top" alt="Document Icon">
                 <div class="card-body">
-                    <h5 class="card-title"><a asp-action="Details" asp-route-id="@item.ContentID">@Html.DisplayFor(modelItem => item.Title)</a></h5>
-                    <p class="card-text">@item.DateCreated.ToString("dd-MMM-yyyy")</p>
-                    <a asp-action="Edit" asp-route-id="@item.ContentID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Note</a>
+                    <p class="card-title"><a asp-action="Details" asp-route-id="@item.ContentID">@Html.DisplayFor(modelItem => item.Title)</a></p>
+                    <center><a asp-action="Edit" asp-route-id="@item.ContentID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Note</a></center>
                 </div>
             </div>
         </div>
@@ -67,13 +78,13 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Entry</h5>
+                <h5 class="modal-title" id="exampleModalLabel">New Note</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Create">
+                <form asp-action="Create" asp-controller="Note">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
                         <div class="col-md-6">
@@ -112,6 +123,40 @@
     </div>
 </div>
 <!--End Create New Entry Modal-->
+
+
+<!--Start Create New Folder Modal-->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Folder</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create" asp-controller="Folder">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Folder.FolderName" class="control-label"></label>
+                                <input asp-for="Folder.FolderName" class="form-control" />
+                                <span asp-validation-for="Folder.FolderName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Create Entry</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Create New Folder Modal-->
 
 
 <br />
