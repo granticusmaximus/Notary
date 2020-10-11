@@ -47,7 +47,8 @@
         <div class="col-sm">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <i class="fa fa-folder"><p class="card-title"><a asp-action="FolderDetails" asp-route-id="@item.FolderID">@Html.DisplayFor(modelItem => item.FolderName)</a></p></i>
+                    <p class="card-title"><i class="fa fa-folder"><a asp-action="FolderDetails" asp-route-id="@item.FolderID"> @Html.DisplayFor(modelItem => item.FolderName)</a></i></p>
+                    
                 </div>
             </div>
         </div>
