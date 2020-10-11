@@ -1,0 +1,17 @@
+@model Notary.Models.Folder
+
+@{ ViewData["Title"] = "FolderDetails"; }
+
+<h1>@Html.DisplayFor(model => model.FolderName)</h1>
+<hr/>
+<div>
+    <button class="btn btn-outline-primary">
+        <a asp-action="FolderEdit" style="color:black" asp-route-id="@Model.FolderID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+    </button> |
+    <button class="btn btn-outline-danger"><a asp-action="FolderDelete" style="color:black" asp-route-id="@Model.FolderID"><i class="fa fa-times" aria-hidden="true"></i>Delete Folder</a></button> |
+    <button class="btn btn-outline-secondary"><a asp-action="Index" style="color:black"><i class="fa fa-list-ul" aria-hidden="true"></i>Back to List</a></button>
+</div>
+<hr/>
+<p>I will make a list of files that are located in each folder</p>
+<br />
+<hr />

@@ -83,16 +83,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.osx-x64",
-              "version": "[3.1.8, 3.1.8]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.osx-x64",
-              "version": "[3.1.8, 3.1.8]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -102,11 +92,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "osx-x64": {
-          "#import": []
         }
       }
     }

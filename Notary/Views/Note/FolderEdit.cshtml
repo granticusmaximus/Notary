@@ -1,0 +1,40 @@
+@model Notary.Models.Folder
+
+@{ ViewData["Title"] = "Edit Folder"; }
+
+<h4>Edit Entry</h4>
+<div>
+    <button class="btn btn-secondary"><a asp-action="Index" style="color:white"><i class="fa fa-list-ul" aria-hidden="true"></i> Back to List</a></button>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="FolderEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FolderID" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="FolderName" class="control-label"></label>
+                        <input asp-for="FolderName" class="form-control" />
+                        <span asp-validation-for="FolderName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button> |
+                <button class="btn btn-danger"><a asp-action="FolderDelete" style="color:black" asp-route-id="@Model.FolderID"><i class="fa fa-times" aria-hidden="true"></i>Delete</a></button>
+            </div>
+            <p>Also will make a list showing notes attached here.</p>
+        </form>
+    </div>
+</div>
+<br />
+<hr />
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

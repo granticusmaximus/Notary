@@ -14397,11 +14397,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/Folder/Index.cshtml",
-      "TargetPath": "Views\\Folder\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
@@ -14419,6 +14414,11 @@
     {
       "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Areas/Identity/Pages/Account/_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/Note/FolderDetails.cshtml",
+      "TargetPath": "Views\\Note\\FolderDetails.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14447,8 +14447,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/Note/CreateFolder.cshtml",
+      "TargetPath": "Views\\Note\\CreateFolder.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/Note/Index.cshtml",
       "TargetPath": "Views\\Note\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/Note/FolderEdit.cshtml",
+      "TargetPath": "Views\\Note\\FolderEdit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14459,6 +14469,11 @@
     {
       "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/grantwatson/Desktop/Dev/Notary/Notary/Views/Note/FolderDelete.cshtml",
+      "TargetPath": "Views\\Note\\FolderDelete.cshtml",
       "FileKind": "mvc"
     },
     {
