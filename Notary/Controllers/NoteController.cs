@@ -46,6 +46,8 @@ namespace Notary.Controllers
             return View(entryVM);
         }
 
+        #region Folder Controller Functions
+
         public IActionResult CreateFolder()
         {
             return View();
@@ -53,17 +55,118 @@ namespace Notary.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateFolder([Bind("FolderID,FolderName")] Folder entry)
+        public async Task<IActionResult> CreateFolder([Bind("FolderID,FolderName")] Folder folder)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(entry);
+                _context.Add(folder);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            return View(folder);
+        }
+
+        public async Task<IActionResult> FolderDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var folder = await _context.Folders
+                .FirstOrDefaultAsync(m => m.FolderID == id);
+            if (folder == null)
+            {
+                return NotFound();
+            }
+
+            return View(folder);
+        }
+
+        public async Task<IActionResult> FolderEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var entry = await _context.Folders.FindAsync(id);
+            if (entry == null)
+            {
+                return NotFound();
             }
             return View(entry);
         }
 
+        // POST: Folder/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FolderEdit(int id, [Bind("FolderID,FolderName")] Folder folder)
+        {
+            if (id != folder.FolderID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(folder);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!FolderExists(folder.FolderID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(folder);
+        }
+
+        public async Task<IActionResult> FolderDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var folder = await _context.Folders
+                .FirstOrDefaultAsync(m => m.FolderID == id);
+            if (folder == null)
+            {
+                return NotFound();
+            }
+
+            return View(folder);
+        }
+
+        [HttpPost, ActionName("FolderDelete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FolderDeleteConfirmed(int id)
+        {
+            var folder = await _context.Folders.FindAsync(id);
+            _context.Folders.Remove(folder);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool FolderExists(int id)
+        {
+            return _context.Folders.Any(e => e.FolderID == id);
+        }
+        #endregion
+
+        #region Note Controller Functions
         // GET: Entry/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -185,5 +288,7 @@ namespace Notary.Controllers
         {
             return _context.Notes.Any(e => e.ContentID == id);
         }
+        #endregion
+        
     }
 }
