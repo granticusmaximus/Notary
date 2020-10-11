@@ -28,18 +28,40 @@ namespace Notary.Controllers
         {
             var entries = from e in _context.Notes
                           select e;
+            var folders = from f in _context.Folders
+                          select f;
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 entries = entries.Where(s => s.Title.Contains(searchString));
+                folders = folders.Where(s => s.FolderName.Contains(searchString));
             }
 
             var entryVM = new EntryViewModel
             {
-                Entries = await entries.ToListAsync()
+                Entries = await entries.ToListAsync(),
+                Folders = await folders.ToListAsync()
             };
 
             return View(entryVM);
+        }
+
+        public IActionResult CreateFolder()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateFolder([Bind("FolderID,FolderName")] Folder entry)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(entry);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(entry);
         }
 
         // GET: Entry/Details/5

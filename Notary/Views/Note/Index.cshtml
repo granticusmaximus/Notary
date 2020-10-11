@@ -13,9 +13,9 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <!-- Create New Note Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-file-text-o" aria-hidden="true"></i> New Note</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-note-modal-lg"><i class="fa fa-file-text-o" aria-hidden="true"></i> New Note</button>
             <!-- Create New Folder Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-folder-open"></i> New Folder</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-folder-modal-lg"><i class="fa fa-folder-open"></i> New Folder</button>
         </div>
     </div>
     
@@ -40,41 +40,23 @@
         <Hr/>
     }
 </div>
-<!-- 
-    <table class="table">
-    <thead>
-        <tr>
-            <th width="70%">
-                @Html.DisplayNameFor(model => model.Entries[0].Title)
-            </th>
-            <th width="20%">
-                @Html.DisplayNameFor(model => model.Entries[0].DateCreated)
-            </th>
-            <th width="10%">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Entries)
-        {
-            <tr>
-                <td width="70%">
-                    <a asp-action="Details" asp-route-id="@item.ContentID">@Html.DisplayFor(modelItem => item.Title)</a>
-                </td>
-                <td width="15%">
-                    @item.DateCreated.ToString("dd-MMM-yyyy")
-                </td>
-                <td width="10%">
-                    <button type="button" class="btn btn-outline-primary"><a asp-action="Edit" asp-route-id="@item.ContentID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
-                </td>
-            </tr>
-}
-    </tbody>
-</table>
--->
 
+<div class="row">
+@foreach (var item in Model.Folders)
+    {
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <i class="fa fa-folder"><p class="card-title"><a asp-action="Details" asp-route-id="@item.FolderID">@Html.DisplayFor(modelItem => item.FolderName)</a></p></i>
+                </div>
+            </div>
+        </div>
+        <Hr/>
+    }
+</div>
 
 <!--Start Create New Entry Modal-->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-note-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -84,7 +66,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Create" asp-controller="Note">
+                <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
                         <div class="col-md-6">
@@ -126,7 +108,7 @@
 
 
 <!--Start Create New Folder Modal-->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-folder-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -136,7 +118,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Create" asp-controller="Folder">
+                <form asp-action="CreateFolder">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
                         <div class="col-md-12">
@@ -148,7 +130,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Create Entry</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Create Folder</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </form>

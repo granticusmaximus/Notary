@@ -39,23 +39,7 @@ namespace Notary.Controllers
             return View(folderVM);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FolderID,FolderName")] Folder entry)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(entry);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(entry);
-        }
 
 
     }
