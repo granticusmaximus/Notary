@@ -10,8 +10,8 @@ using Notary.Data;
 namespace Notary.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201001021150_FolderEntityUpdate")]
-    partial class FolderEntityUpdate
+    [Migration("20201012223658_ForeignKeyNoteFolderUpdate")]
+    partial class ForeignKeyNoteFolderUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -237,12 +237,7 @@ namespace Notary.Migrations
                     b.Property<string>("FolderName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NoteContentID")
-                        .HasColumnType("int");
-
                     b.HasKey("FolderID");
-
-                    b.HasIndex("NoteContentID");
 
                     b.ToTable("Folders");
                 });
@@ -263,7 +258,7 @@ namespace Notary.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FolderID")
+                    b.Property<int>("FolderRefID")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -273,7 +268,7 @@ namespace Notary.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("FolderID");
+                    b.HasIndex("FolderRefID");
 
                     b.ToTable("Notes");
                 });
@@ -293,17 +288,17 @@ namespace Notary.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3fb57d35-9324-453d-a043-80504c194e52",
+                            Id = "194bc3f5-7c76-4e61-849d-615e2428b4b3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "28693511-a773-4a8e-9d48-5c0037332ecd",
+                            ConcurrencyStamp = "60b6dc3b-fed1-4f4e-8d50-0eb5123b955e",
                             Email = "gwatson117@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "gwatson117@gmail.com",
                             NormalizedUserName = "gwatson117@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJcPzmPjf/GaXrsHtClnv3HG/jnouCny3pqZZRSbwQ3QG5im+Onsa5S5p1is1Wd9CQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF38m2OF9yBFPefqNXtq9NU8LcV1GfzB2//CfhlsvYHdli7ji1KzwUZkfOXjV+DBFA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1a0043b8-29f6-4543-8cf4-ec47475deb33",
+                            SecurityStamp = "445f337b-87f8-4e8e-9fe6-81cfb7ae25a2",
                             TwoFactorEnabled = false,
                             UserName = "gwatson117@gmail.com",
                             FirstName = "Grant",
@@ -362,22 +357,17 @@ namespace Notary.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Notary.Models.Folder", b =>
-                {
-                    b.HasOne("Notary.Models.Note", "Note")
-                        .WithMany()
-                        .HasForeignKey("NoteContentID");
-                });
-
             modelBuilder.Entity("Notary.Models.Note", b =>
                 {
                     b.HasOne("Notary.Models.ApplicationUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
 
-                    b.HasOne("Notary.Models.Folder", null)
+                    b.HasOne("Notary.Models.Folder", "Folder")
                         .WithMany("Notes")
-                        .HasForeignKey("FolderID");
+                        .HasForeignKey("FolderRefID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

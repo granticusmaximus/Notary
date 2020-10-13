@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Notary.Models
@@ -13,5 +14,9 @@ namespace Notary.Models
         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
         public ApplicationUser AppUser { get; set; }
+
+        [ForeignKey("Folder")]
+        public int FolderRefID {get;set;}
+        public Folder Folder {get;set;}
     }
 }

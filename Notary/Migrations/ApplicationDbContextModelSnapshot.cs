@@ -235,12 +235,7 @@ namespace Notary.Migrations
                     b.Property<string>("FolderName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NoteContentID")
-                        .HasColumnType("int");
-
                     b.HasKey("FolderID");
-
-                    b.HasIndex("NoteContentID");
 
                     b.ToTable("Folders");
                 });
@@ -261,7 +256,7 @@ namespace Notary.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FolderID")
+                    b.Property<int>("FolderRefID")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -271,7 +266,7 @@ namespace Notary.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("FolderID");
+                    b.HasIndex("FolderRefID");
 
                     b.ToTable("Notes");
                 });
@@ -291,17 +286,17 @@ namespace Notary.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3fb57d35-9324-453d-a043-80504c194e52",
+                            Id = "91451322-54d0-47e2-bc36-f0b100d6f27d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "28693511-a773-4a8e-9d48-5c0037332ecd",
+                            ConcurrencyStamp = "ee3e50ab-39ef-452a-ab34-9fdc472c6ad6",
                             Email = "gwatson117@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "gwatson117@gmail.com",
                             NormalizedUserName = "gwatson117@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJcPzmPjf/GaXrsHtClnv3HG/jnouCny3pqZZRSbwQ3QG5im+Onsa5S5p1is1Wd9CQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAjPnaaL+Dj6urp/IJ1F6B6pzmsgEJX844PJw6+LP9L9hfbPzrh7PKEaaOZYNh9TGQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1a0043b8-29f6-4543-8cf4-ec47475deb33",
+                            SecurityStamp = "b574045b-45f4-4ede-bbab-8b604f2e09a1",
                             TwoFactorEnabled = false,
                             UserName = "gwatson117@gmail.com",
                             FirstName = "Grant",
@@ -360,22 +355,17 @@ namespace Notary.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Notary.Models.Folder", b =>
-                {
-                    b.HasOne("Notary.Models.Note", "Note")
-                        .WithMany()
-                        .HasForeignKey("NoteContentID");
-                });
-
             modelBuilder.Entity("Notary.Models.Note", b =>
                 {
                     b.HasOne("Notary.Models.ApplicationUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId");
 
-                    b.HasOne("Notary.Models.Folder", null)
+                    b.HasOne("Notary.Models.Folder", "Folder")
                         .WithMany("Notes")
-                        .HasForeignKey("FolderID");
+                        .HasForeignKey("FolderRefID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

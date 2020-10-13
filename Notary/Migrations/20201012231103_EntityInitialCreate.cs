@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Notary.Migrations
 {
-    public partial class InitialEntityCommit : Migration
+    public partial class EntityInitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,19 @@ namespace Notary.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Folders",
+                columns: table => new
+                {
+                    FolderID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FolderName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Folders", x => x.FolderID);
                 });
 
             migrationBuilder.CreateTable(
@@ -164,7 +177,8 @@ namespace Notary.Migrations
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
-                    AppUserId = table.Column<string>(nullable: true)
+                    AppUserId = table.Column<string>(nullable: true),
+                    FolderRefID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -175,12 +189,18 @@ namespace Notary.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Notes_Folders_FolderRefID",
+                        column: x => x.FolderRefID,
+                        principalTable: "Folders",
+                        principalColumn: "FolderID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "FirstName", "LastName" },
-                values: new object[] { "b1c461d5-c54e-4575-9d61-d3fdb8b5057f", 0, "af1bacfa-deb9-4287-8fc7-54f452a5127b", "ApplicationUser", "gwatson117@gmail.com", true, false, null, "gwatson117@gmail.com", "gwatson117@gmail.com", "AQAAAAEAACcQAAAAEAGpkSNDSDuhjCTCH9WJ4KfetTBshjyK1TerLMb+7bCRbSoTVkw3iKoUWXPUJ3rPuQ==", null, false, "c2a06ef2-44d5-44a9-b0b9-4feed64d5d7f", false, "gwatson117@gmail.com", "Grant", "Watson" });
+                values: new object[] { "91451322-54d0-47e2-bc36-f0b100d6f27d", 0, "ee3e50ab-39ef-452a-ab34-9fdc472c6ad6", "ApplicationUser", "gwatson117@gmail.com", true, false, null, "gwatson117@gmail.com", "gwatson117@gmail.com", "AQAAAAEAACcQAAAAEAjPnaaL+Dj6urp/IJ1F6B6pzmsgEJX844PJw6+LP9L9hfbPzrh7PKEaaOZYNh9TGQ==", null, false, "b574045b-45f4-4ede-bbab-8b604f2e09a1", false, "gwatson117@gmail.com", "Grant", "Watson" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -225,6 +245,11 @@ namespace Notary.Migrations
                 name: "IX_Notes_AppUserId",
                 table: "Notes",
                 column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notes_FolderRefID",
+                table: "Notes",
+                column: "FolderRefID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -252,6 +277,9 @@ namespace Notary.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Folders");
         }
     }
 }
